@@ -1,0 +1,1255 @@
+{
+  "i236789@isb.nu.edu.pk": {
+    "first_seen": "2025-04-05",
+    "transactions": [
+      {
+        "timestamp": "2025-04-05 04:58:55",
+        "items": {
+          "Coffee": {
+            "price": 300,
+            "quantity": 1
+          },
+          "Muffin": {
+            "price": 300,
+            "quantity": 1
+          }
+        },
+        "total": 600
+      },
+      {
+        "timestamp": "2025-04-18 10:15:32",
+        "items": {
+          "Tea": {
+            "price": 200,
+            "quantity": 1
+          },
+          "Sandwich": {
+            "price": 500,
+            "quantity": 1
+          }
+        },
+        "total": 700
+      }
+    ]
+  },
+  "i231234@isb.nu.edu.pk": {
+    "first_seen": "2025-04-05",
+    "transactions": [
+      {
+        "timestamp": "2025-04-10 16:42:18",
+        "items": {
+          "Latte": {
+            "price": 400,
+            "quantity": 1
+          },
+          "Donut": {
+            "price": 300,
+            "quantity": 1
+          }
+        },
+        "total": 700
+      },
+      {
+        "timestamp": "2025-04-22 08:29:41",
+        "items": {
+          "Iced Coffee": {
+            "price": 400,
+            "quantity": 1
+          },
+          "Pizza Slice": {
+            "price": 500,
+            "quantity": 1
+          }
+        },
+        "total": 900
+      }
+    ]
+  },
+  "i239876@isb.nu.edu.pk": {
+    "first_seen": "2025-04-05",
+    "transactions": [
+      {
+        "timestamp": "2025-04-14 21:08:59",
+        "items": {
+          "Smoothie": {
+            "price": 500,
+            "quantity": 1
+          },
+          "Bagel": {
+            "price": 400,
+            "quantity": 1
+          }
+        },
+        "total": 900
+      },
+      {
+        "timestamp": "2025-04-26 12:01:03",
+        "items": {
+          "Latte": {
+            "price": 400,
+            "quantity": 2
+          },
+          "Croissant": {
+            "price": 300,
+            "quantity": 1
+          }
+        },
+        "total": 1100
+      }
+    ]
+  },
+  "i235678@isb.nu.edu.pk": {
+    "first_seen": "2025-04-05",
+    "transactions": [
+      {
+        "timestamp": "2025-04-08 06:35:27",
+        "items": {
+          "Iced Latte": {
+            "price": 400,
+            "quantity": 1
+          },
+          "Salad": {
+            "price": 700,
+            "quantity": 1
+          }
+        },
+        "total": 1100
+      },
+      {
+        "timestamp": "2025-04-19 18:52:46",
+        "items": {
+          "Espresso": {
+            "price": 300,
+            "quantity": 1
+          },
+          "Muffin": {
+            "price": 300,
+            "quantity": 2
+          }
+        },
+        "total": 900
+      }
+    ]
+  },
+  "i233456@isb.nu.edu.pk": {
+    "first_seen": "2025-04-05",
+    "transactions": [
+      {
+        "timestamp": "2025-04-12 13:19:05",
+        "items": {
+          "Tea": {
+            "price": 200,
+            "quantity": 3
+          }
+        },
+        "total": 600
+      },
+      {
+        "timestamp": "2025-04-28 23:38:12",
+        "items": {
+          "Hot Chocolate": {
+            "price": 400,
+            "quantity": 1
+          },
+          "Bagel": {
+            "price": 400,
+            "quantity": 1
+          },
+          "Cookies": {
+            "price": 300,
+            "quantity": 1
+          }
+        },
+        "total": 1100
+      }
+    ]
+  },
+  "i237890@isb.nu.edu.pk": {
+    "first_seen": "2025-04-05",
+    "transactions": [
+      {
+        "timestamp": "2025-04-06 09:01:23",
+        "items": {
+          "Coffee": {
+            "price": 300,
+            "quantity": 1
+          },
+          "Pancakes": {
+            "price": 600,
+            "quantity": 1
+          }
+        },
+        "total": 900
+      },
+      {
+        "timestamp": "2025-04-21 15:47:39",
+        "items": {
+          "Smoothie": {
+            "price": 500,
+            "quantity": 1
+          },
+          "Wrap": {
+            "price": 600,
+            "quantity": 1
+          }
+        },
+        "total": 1100
+      }
+    ]
+  },
+  "i232345@isb.nu.edu.pk": {
+    "first_seen": "2025-04-05",
+    "transactions": [
+      {
+        "timestamp": "2025-04-15 02:24:58",
+        "items": {
+          "Espresso": {
+            "price": 300,
+            "quantity": 1
+          },
+          "Cake": {
+            "price": 500,
+            "quantity": 1
+          }
+        },
+        "total": 800
+      },
+      {
+        "timestamp": "2025-04-29 07:11:54",
+        "items": {
+          "Coffee": {
+            "price": 300,
+            "quantity": 2
+          }
+        },
+        "total": 600
+      }
+    ]
+  },
+  "i238901@isb.nu.edu.pk": {
+    "first_seen": "2025-04-05",
+    "transactions": [
+      {
+        "timestamp": "2025-04-11 19:30:17",
+        "items": {
+          "Hot Chocolate": {
+            "price": 400,
+            "quantity": 1
+          },
+          "Croissant": {
+            "price": 300,
+            "quantity": 1
+          }
+        },
+        "total": 700
+      },
+      {
+        "timestamp": "2025-04-24 03:00:21",
+        "items": {
+          "Iced Latte": {
+            "price": 400,
+            "quantity": 1
+          },
+          "Donut": {
+            "price": 300,
+            "quantity": 1
+          },
+          "Chips": {
+            "price": 200,
+            "quantity": 1
+          }
+        },
+        "total": 900
+      }
+    ]
+  },
+  "i234567@isb.nu.edu.pk": {
+    "first_seen": "2025-04-05",
+    "transactions": [
+      {
+        "timestamp": "2025-04-07 14:56:43",
+        "items": {
+          "Sandwich": {
+            "price": 500,
+            "quantity": 1
+          },
+          "Soda": {
+            "price": 200,
+            "quantity": 1
+          }
+        },
+        "total": 700
+      },
+      {
+        "timestamp": "2025-04-20 11:23:01",
+        "items": {
+          "Hot Chocolate": {
+            "price": 400,
+            "quantity": 2
+          }
+        },
+        "total": 800
+      }
+    ]
+  },
+  "i239012@isb.nu.edu.pk": {
+    "first_seen": "2025-04-05",
+    "transactions": [
+      {
+        "timestamp": "2025-04-13 00:40:19",
+        "items": {
+          "Cappuccino": {
+            "price": 400,
+            "quantity": 1
+          },
+          "Brownie": {
+            "price": 400,
+            "quantity": 1
+          }
+        },
+        "total": 800
+      },
+      {
+        "timestamp": "2025-04-25 17:58:28",
+        "items": {
+          "Sandwich": {
+            "price": 500,
+            "quantity": 1
+          },
+          "Fresh Juice": {
+            "price": 400,
+            "quantity": 1
+          }
+        },
+        "total": 900
+      }
+    ]
+  },
+  "i233344@isb.nu.edu.pk": {
+    "first_seen": "2025-04-05",
+    "transactions": [
+      {
+        "timestamp": "2025-04-09 17:03:56",
+        "items": {
+          "Iced Coffee": {
+            "price": 400,
+            "quantity": 1
+          },
+          "Muffin": {
+            "price": 300,
+            "quantity": 1
+          }
+        },
+        "total": 700
+      },
+      {
+        "timestamp": "2025-04-23 01:10:44",
+        "items": {
+          "Cappuccino": {
+            "price": 400,
+            "quantity": 1
+          },
+          "Salad": {
+            "price": 700,
+            "quantity": 1
+          }
+        },
+        "total": 1100
+      }
+    ]
+  },
+  "i237788@isb.nu.edu.pk": {
+    "first_seen": "2025-04-05",
+    "transactions": [
+      {
+        "timestamp": "2025-04-16 03:41:11",
+        "items": {
+          "Latte": {
+            "price": 400,
+            "quantity": 1
+          },
+          "Pizza Slice": {
+            "price": 500,
+            "quantity": 1
+          }
+        },
+        "total": 900
+      },
+      {
+        "timestamp": "2025-04-30 08:37:29",
+        "items": {
+          "Tea": {
+            "price": 200,
+            "quantity": 2
+          },
+          "Omelette": {
+            "price": 600,
+            "quantity": 1
+          }
+        },
+        "total": 1000
+      }
+    ]
+  },
+  "i231122@isb.nu.edu.pk": {
+    "first_seen": "2025-04-05",
+    "transactions": [
+      {
+        "timestamp": "2025-04-01 20:05:02",
+        "items": {
+          "Milkshake": {
+            "price": 500,
+            "quantity": 1
+          },
+          "Cake": {
+            "price": 500,
+            "quantity": 1
+          }
+        },
+        "total": 1000
+      },
+      {
+        "timestamp": "2025-04-17 14:28:30",
+        "items": {
+          "Espresso": {
+            "price": 300,
+            "quantity": 2
+          }
+        },
+        "total": 600
+      }
+    ]
+  },
+  "i236677@isb.nu.edu.pk": {
+    "first_seen": "2025-04-05",
+    "transactions": [
+      {
+        "timestamp": "2025-04-04 22:12:47",
+        "items": {
+          "Iced Coffee": {
+            "price": 400,
+            "quantity": 1
+          },
+          "Burger": {
+            "price": 700,
+            "quantity": 1
+          }
+        },
+        "total": 1100
+      },
+      {
+        "timestamp": "2025-04-18 05:59:16",
+        "items": {
+          "Latte": {
+            "price": 400,
+            "quantity": 1
+          },
+          "Pancakes": {
+            "price": 600,
+            "quantity": 1
+          }
+        },
+        "total": 1000
+      }
+    ]
+  },
+  "i234455@isb.nu.edu.pk": {
+    "first_seen": "2025-04-05",
+    "transactions": [
+      {
+        "timestamp": "2025-04-10 01:36:33",
+        "items": {
+          "Tea": {
+            "price": 200,
+            "quantity": 1
+          },
+          "Pasta": {
+            "price": 800,
+            "quantity": 1
+          }
+        },
+        "total": 1000
+      },
+      {
+        "timestamp": "2025-04-24 13:23:50",
+        "items": {
+          "Espresso": {
+            "price": 300,
+            "quantity": 2
+          },
+          "Brownie": {
+            "price": 400,
+            "quantity": 1
+          }
+        },
+        "total": 1000
+      }
+    ]
+  },
+  "i238899@isb.nu.edu.pk": {
+    "first_seen": "2025-04-05",
+    "transactions": [
+      {
+        "timestamp": "2025-04-03 18:20:14",
+        "items": {
+          "Hot Chocolate": {
+            "price": 400,
+            "quantity": 1
+          },
+          "Omelette": {
+            "price": 600,
+            "quantity": 1
+          }
+        },
+        "total": 1000
+      },
+      {
+        "timestamp": "2025-04-27 09:45:37",
+        "items": {
+          "Iced Latte": {
+            "price": 400,
+            "quantity": 1
+          },
+          "Cookies": {
+            "price": 300,
+            "quantity": 1
+          }
+        },
+        "total": 700
+      }
+    ]
+  },
+  "i235010@isb.nu.edu.pk": {
+    "first_seen": "2025-04-05",
+    "transactions": [
+      {
+        "timestamp": "2025-04-05 04:21:59",
+        "items": {
+          "Coffee": {
+            "price": 300,
+            "quantity": 1
+          },
+          "Cappuccino": {
+            "price": 400,
+            "quantity": 1
+          },
+          "Latte": {
+            "price": 400,
+            "quantity": 1
+          },
+          "Tea": {
+            "price": 200,
+            "quantity": 1
+          }
+        },
+        "total": 1300.0
+      },
+      {
+        "timestamp": "2025-04-05 04:24:22",
+        "items": {
+          "Coffee": {
+            "price": 300,
+            "quantity": 1
+          },
+          "Cappuccino": {
+            "price": 400,
+            "quantity": 1
+          },
+          "Latte": {
+            "price": 400,
+            "quantity": 1
+          },
+          "Sandwich": {
+            "price": 500,
+            "quantity": 1
+          },
+          "Croissant": {
+            "price": 300,
+            "quantity": 1
+          },
+          "Bagel": {
+            "price": 400,
+            "quantity": 1
+          },
+          "Burger": {
+            "price": 700,
+            "quantity": 1
+          },
+          "Soup": {
+            "price": 500,
+            "quantity": 1
+          },
+          "Pasta": {
+            "price": 800,
+            "quantity": 1
+          },
+          "Cookies": {
+            "price": 300,
+            "quantity": 1
+          },
+          "Chips": {
+            "price": 200,
+            "quantity": 1
+          }
+        },
+        "total": 4800.0
+      },
+      {
+        "timestamp": "2025-04-07 19:15:24",
+        "items": {
+          "Coffee": {
+            "price": 300,
+            "quantity": 1
+          },
+          "Cappuccino": {
+            "price": 400,
+            "quantity": 1
+          },
+          "Tea": {
+            "price": 200,
+            "quantity": 1
+          },
+          "Salad": {
+            "price": 700,
+            "quantity": 1
+          },
+          "Burger": {
+            "price": 700,
+            "quantity": 1
+          },
+          "Soup": {
+            "price": 500,
+            "quantity": 1
+          }
+        },
+        "total": 2800.0
+      },
+      {
+        "timestamp": "2025-04-07 19:55:53",
+        "items": {
+          "Iced Coffee": {
+            "price": 400,
+            "quantity": 1
+          },
+          "Iced Latte": {
+            "price": 400,
+            "quantity": 1
+          },
+          "Soda": {
+            "price": 200,
+            "quantity": 1
+          },
+          "Croissant": {
+            "price": 300,
+            "quantity": 1
+          },
+          "Bagel": {
+            "price": 400,
+            "quantity": 1
+          },
+          "Burger": {
+            "price": 700,
+            "quantity": 4
+          }
+        },
+        "total": 4500.0
+      },
+      {
+        "timestamp": "2025-04-16 01:50:44",
+        "items": {
+          "Coffee": {
+            "price": 300,
+            "quantity": 1
+          },
+          "Cappuccino": {
+            "price": 400,
+            "quantity": 1
+          },
+          "Tea": {
+            "price": 200,
+            "quantity": 1
+          },
+          "Latte": {
+            "price": 400,
+            "quantity": 1
+          },
+          "Iced Coffee": {
+            "price": 400,
+            "quantity": 1
+          }
+        },
+        "total": 1700.0
+      },
+      {
+        "timestamp": "2025-04-17 11:35:16",
+        "items": {
+          "Coffee": {
+            "price": 300,
+            "quantity": 2
+          },
+          "Tea": {
+            "price": 200,
+            "quantity": 1
+          }
+        },
+        "total": 800.0
+      }
+    ]
+  },
+  "i235558@isb.nu.edu.pk": {
+    "first_seen": "2025-04-07",
+    "transactions": [
+      {
+        "timestamp": "2025-04-07 08:53:19",
+        "items": {
+          "Coffee": {
+            "price": 300,
+            "quantity": 1
+          },
+          "Cappuccino": {
+            "price": 400,
+            "quantity": 1
+          },
+          "Latte": {
+            "price": 400,
+            "quantity": 1
+          },
+          "Tea": {
+            "price": 200,
+            "quantity": 1
+          }
+        },
+        "total": 1300.0
+      },
+      {
+        "timestamp": "2025-04-30 13:25:19",
+        "items": {
+          "Soda": {
+            "price": 200,
+            "quantity": 1
+          }
+        },
+        "total": 200.0
+      }
+    ]
+  },
+  "i235508@isb.nu.edu.pk": {
+    "first_seen": "2025-04-30",
+    "transactions": [
+      {
+        "timestamp": "2025-04-30 12:05:01",
+        "items": {
+          "Coffee": {
+            "price": 300,
+            "quantity": 1
+          },
+          "Cappuccino": {
+            "price": 400,
+            "quantity": 1
+          },
+          "Latte": {
+            "price": 400,
+            "quantity": 1
+          },
+          "Bagel": {
+            "price": 400,
+            "quantity": 2
+          },
+          "Sandwich": {
+            "price": 500,
+            "quantity": 1
+          }
+        },
+        "total": 2400.0
+      },
+      {
+        "timestamp": "2025-04-30 12:34:47",
+        "items": {
+          "Cappuccino": {
+            "price": 400,
+            "quantity": 1
+          },
+          "Tea": {
+            "price": 200,
+            "quantity": 1
+          },
+          "Latte": {
+            "price": 400,
+            "quantity": 1
+          }
+        },
+        "total": 1000.0
+      },
+      {
+        "timestamp": "2025-04-30 12:36:25",
+        "items": {
+          "Coffee": {
+            "price": 300,
+            "quantity": 1
+          },
+          "Cappuccino": {
+            "price": 400,
+            "quantity": 1
+          },
+          "Latte": {
+            "price": 400,
+            "quantity": 1
+          }
+        },
+        "total": 1100.0
+      },
+      {
+        "timestamp": "2025-04-30 12:42:46",
+        "items": {
+          "Coffee": {
+            "price": 300,
+            "quantity": 1
+          },
+          "Cappuccino": {
+            "price": 400,
+            "quantity": 1
+          },
+          "Latte": {
+            "price": 400,
+            "quantity": 1
+          },
+          "Sandwich": {
+            "price": 500,
+            "quantity": 1
+          },
+          "Croissant": {
+            "price": 300,
+            "quantity": 1
+          }
+        },
+        "total": 1900.0
+      },
+      {
+        "timestamp": "2025-04-30 12:50:55",
+        "items": {
+          "Sandwich": {
+            "price": 500,
+            "quantity": 1
+          },
+          "Croissant": {
+            "price": 300,
+            "quantity": 1
+          },
+          "Iced Coffee": {
+            "price": 400,
+            "quantity": 1
+          },
+          "Milkshake": {
+            "price": 500,
+            "quantity": 1
+          }
+        },
+        "total": 1700.0
+      },
+      {
+        "timestamp": "2025-04-30 12:58:06",
+        "items": {
+          "Iced Coffee": {
+            "price": 400,
+            "quantity": 1
+          },
+          "Iced Latte": {
+            "price": 400,
+            "quantity": 1
+          }
+        },
+        "total": 800.0
+      },
+      {
+        "timestamp": "2025-04-30 13:00:04",
+        "items": {
+          "Iced Coffee": {
+            "price": 400,
+            "quantity": 1
+          },
+          "Iced Latte": {
+            "price": 400,
+            "quantity": 1
+          },
+          "Soda": {
+            "price": 200,
+            "quantity": 1
+          },
+          "Milkshake": {
+            "price": 500,
+            "quantity": 1
+          }
+        },
+        "total": 1500.0
+      },
+      {
+        "timestamp": "2025-04-30 13:25:01",
+        "items": {
+          "Iced Coffee": {
+            "price": 400,
+            "quantity": 1
+          },
+          "Iced Latte": {
+            "price": 400,
+            "quantity": 1
+          }
+        },
+        "total": 800.0
+      },
+      {
+        "timestamp": "2025-04-30 13:30:03",
+        "items": {
+          "Soda": {
+            "price": 200,
+            "quantity": 1
+          },
+          "Iced Coffee": {
+            "price": 400,
+            "quantity": 1
+          },
+          "Milkshake": {
+            "price": 500,
+            "quantity": 1
+          }
+        },
+        "total": 1100.0
+      },
+      {
+        "timestamp": "2025-04-30 13:53:21",
+        "items": {
+          "Sandwich": {
+            "price": 500,
+            "quantity": 1
+          },
+          "Croissant": {
+            "price": 300,
+            "quantity": 1
+          },
+          "Bagel": {
+            "price": 400,
+            "quantity": 1
+          },
+          "Pancakes": {
+            "price": 600,
+            "quantity": 1
+          }
+        },
+        "total": 1800.0
+      },
+      {
+        "timestamp": "2025-04-30 14:01:15",
+        "items": {
+          "Sandwich": {
+            "price": 500,
+            "quantity": 1
+          },
+          "Croissant": {
+            "price": 300,
+            "quantity": 1
+          },
+          "Iced Coffee": {
+            "price": 400,
+            "quantity": 1
+          },
+          "Milkshake": {
+            "price": 500,
+            "quantity": 1
+          }
+        },
+        "total": 1700.0
+      }
+    ]
+  },
+  "i235578@isb.nu.edu.pk": {
+    "first_seen": "2025-04-30",
+    "transactions": [
+      {
+        "timestamp": "2025-04-30 12:06:11",
+        "items": {
+          "Croissant": {
+            "price": 300,
+            "quantity": 1
+          },
+          "Pancakes": {
+            "price": 600,
+            "quantity": 1
+          },
+          "French Toast": {
+            "price": 700,
+            "quantity": 1
+          },
+          "Coffee": {
+            "price": 300,
+            "quantity": 1
+          },
+          "Iced Latte": {
+            "price": 400,
+            "quantity": 1
+          },
+          "Milkshake": {
+            "price": 500,
+            "quantity": 1
+          },
+          "Fresh Juice": {
+            "price": 400,
+            "quantity": 1
+          },
+          "Muffin": {
+            "price": 300,
+            "quantity": 1
+          },
+          "Cookies": {
+            "price": 300,
+            "quantity": 1
+          },
+          "Chips": {
+            "price": 200,
+            "quantity": 2
+          }
+        },
+        "total": 4200.0
+      }
+    ]
+  },
+  "i235088@isb.nu.edu.pk": {
+    "first_seen": "2025-04-30",
+    "transactions": [
+      {
+        "timestamp": "2025-04-30 12:53:49",
+        "items": {
+          "Iced Coffee": {
+            "price": 400,
+            "quantity": 1
+          },
+          "Coffee": {
+            "price": 300,
+            "quantity": 1
+          },
+          "Cappuccino": {
+            "price": 400,
+            "quantity": 1
+          },
+          "Tea": {
+            "price": 200,
+            "quantity": 1
+          }
+        },
+        "total": 1300.0
+      }
+    ]
+  },
+  "i235565@isb.nu.edu.pk": {
+    "first_seen": "2025-04-30",
+    "transactions": [
+      {
+        "timestamp": "2025-04-30 12:57:09",
+        "items": {
+          "Latte": {
+            "price": 400,
+            "quantity": 2
+          },
+          "Coffee": {
+            "price": 300,
+            "quantity": 1
+          },
+          "Cappuccino": {
+            "price": 400,
+            "quantity": 1
+          },
+          "Milkshake": {
+            "price": 500,
+            "quantity": 1
+          }
+        },
+        "total": 2000.0
+      }
+    ]
+  },
+  "i234540@isb.nu.edu.pk": {
+    "first_seen": "2025-04-30",
+    "transactions": [
+      {
+        "timestamp": "2025-04-30 13:00:33",
+        "items": {
+          "Iced Coffee": {
+            "price": 400,
+            "quantity": 1
+          },
+          "Fresh Juice": {
+            "price": 400,
+            "quantity": 1
+          },
+          "Milkshake": {
+            "price": 500,
+            "quantity": 1
+          },
+          "Soda": {
+            "price": 200,
+            "quantity": 1
+          },
+          "Smoothie": {
+            "price": 500,
+            "quantity": 1
+          }
+        },
+        "total": 2000.0
+      },
+      {
+        "timestamp": "2025-04-30 13:01:12",
+        "items": {
+          "Iced Coffee": {
+            "price": 400,
+            "quantity": 1
+          },
+          "Iced Latte": {
+            "price": 400,
+            "quantity": 1
+          }
+        },
+        "total": 800.0
+      }
+    ]
+  },
+  "i230063@isb.nu.edu.pk": {
+    "first_seen": "2025-04-30",
+    "transactions": [
+      {
+        "timestamp": "2025-04-30 13:27:07",
+        "items": {
+          "Soda": {
+            "price": 200,
+            "quantity": 1
+          }
+        },
+        "total": 200.0
+      }
+    ]
+  },
+  "i234051@isb.nu.edu.pk": {
+    "first_seen": "2025-04-30",
+    "transactions": [
+      {
+        "timestamp": "2025-04-30 13:37:27",
+        "items": {
+          "Iced Coffee": {
+            "price": 400,
+            "quantity": 1
+          },
+          "Iced Latte": {
+            "price": 400,
+            "quantity": 1
+          },
+          "Sandwich": {
+            "price": 500,
+            "quantity": 1
+          },
+          "Bagel": {
+            "price": 400,
+            "quantity": 1
+          }
+        },
+        "total": 1700.0
+      }
+    ]
+  },
+  "i245163@isb.nu.edu.pk": {
+    "first_seen": "2025-04-30",
+    "transactions": [
+      {
+        "timestamp": "2025-04-30 13:58:32",
+        "items": {
+          "Pancakes": {
+            "price": 600,
+            "quantity": 1
+          },
+          "French Toast": {
+            "price": 700,
+            "quantity": 1
+          }
+        },
+        "total": 1300.0
+      }
+    ]
+  },
+  "i235580@isb.nu.edu.pk": {
+    "first_seen": "2025-04-30",
+    "transactions": [
+      {
+        "timestamp": "2025-04-30 14:03:58",
+        "items": {
+          "Iced Coffee": {
+            "price": 400,
+            "quantity": 1
+          },
+          "Iced Latte": {
+            "price": 400,
+            "quantity": 1
+          },
+          "Milkshake": {
+            "price": 500,
+            "quantity": 1
+          },
+          "Coffee": {
+            "price": 300,
+            "quantity": 1
+          },
+          "Hot Chocolate": {
+            "price": 400,
+            "quantity": 1
+          }
+        },
+        "total": 2000.0
+      }
+    ]
+  },
+  "i235514@isb.nu.edu.pk": {
+    "first_seen": "2025-04-30",
+    "transactions": [
+      {
+        "timestamp": "2025-04-30 14:20:09",
+        "items": {
+          "Coffee": {
+            "price": 300,
+            "quantity": 1
+          },
+          "Cappuccino": {
+            "price": 400,
+            "quantity": 1
+          },
+          "Latte": {
+            "price": 400,
+            "quantity": 2
+          },
+          "Croissant": {
+            "price": 300,
+            "quantity": 1
+          },
+          "Pancakes": {
+            "price": 600,
+            "quantity": 1
+          }
+        },
+        "total": 2400.0
+      }
+    ]
+  },
+  "i235556@isb.nu.edu.pk": {
+    "first_seen": "2025-04-30",
+    "transactions": [
+      {
+        "timestamp": "2025-04-30 14:23:54",
+        "items": {
+          "Sandwich": {
+            "price": 500,
+            "quantity": 2
+          },
+          "Croissant": {
+            "price": 300,
+            "quantity": 2
+          }
+        },
+        "total": 1600.0
+      }
+    ]
+  }
+}

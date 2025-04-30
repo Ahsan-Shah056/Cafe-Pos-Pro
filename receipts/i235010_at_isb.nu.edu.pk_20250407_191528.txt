@@ -1,0 +1,19 @@
+
+        NATIONAL UNIVERSITY - ISLAMABAD CAMPUS
+        =============================================
+        Date: 2025-04-07 19:15:24
+        Customer: i235010@isb.nu.edu.pk
+        ---------------------------------------------
+        ITEM               QTY   PRICE   TOTAL
+        ---------------------------------------------
+        Burger              1     700Rs    700Rs
+Cappuccino          1     400Rs    400Rs
+Coffee              1     300Rs    300Rs
+Salad               1     700Rs    700Rs
+Soup                1     500Rs    500Rs
+Tea                 1     200Rs    200Rs
+---------------------------------------------
+                                TOTAL: 2800.00Rs
+=============================================
+Thank you for your purchase!
+       CafePOS Pro v1.0

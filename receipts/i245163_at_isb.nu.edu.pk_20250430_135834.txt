@@ -1,0 +1,15 @@
+
+        NATIONAL UNIVERSITY - ISLAMABAD CAMPUS
+        =============================================
+        Date: 2025-04-30 13:58:32
+        Customer: i245163@isb.nu.edu.pk
+        ---------------------------------------------
+        ITEM               QTY   PRICE   TOTAL
+        ---------------------------------------------
+        French Toast        1     700Rs    700Rs
+Pancakes            1     600Rs    600Rs
+---------------------------------------------
+                                TOTAL: 1300.00Rs
+=============================================
+Thank you for your purchase!
+       CafePOS Pro v1.0

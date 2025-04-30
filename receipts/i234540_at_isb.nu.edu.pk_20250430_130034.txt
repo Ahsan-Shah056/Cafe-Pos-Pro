@@ -1,0 +1,18 @@
+
+        NATIONAL UNIVERSITY - ISLAMABAD CAMPUS
+        =============================================
+        Date: 2025-04-30 13:00:33
+        Customer: i234540@isb.nu.edu.pk
+        ---------------------------------------------
+        ITEM               QTY   PRICE   TOTAL
+        ---------------------------------------------
+        Fresh Juice         1     400Rs    400Rs
+Iced Coffee         1     400Rs    400Rs
+Milkshake           1     500Rs    500Rs
+Smoothie            1     500Rs    500Rs
+Soda                1     200Rs    200Rs
+---------------------------------------------
+                                TOTAL: 2000.00Rs
+=============================================
+Thank you for your purchase!
+       CafePOS Pro v1.0

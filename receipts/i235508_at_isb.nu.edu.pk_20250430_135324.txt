@@ -1,0 +1,17 @@
+
+        NATIONAL UNIVERSITY - ISLAMABAD CAMPUS
+        =============================================
+        Date: 2025-04-30 13:53:21
+        Customer: i235508@isb.nu.edu.pk
+        ---------------------------------------------
+        ITEM               QTY   PRICE   TOTAL
+        ---------------------------------------------
+        Bagel               1     400Rs    400Rs
+Croissant           1     300Rs    300Rs
+Pancakes            1     600Rs    600Rs
+Sandwich            1     500Rs    500Rs
+---------------------------------------------
+                                TOTAL: 1800.00Rs
+=============================================
+Thank you for your purchase!
+       CafePOS Pro v1.0

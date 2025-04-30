@@ -1,0 +1,23 @@
+
+        NATIONAL UNIVERSITY - ISLAMABAD CAMPUS
+        =============================================
+        Date: 2025-04-30 12:06:11
+        Customer: i235578@isb.nu.edu.pk
+        ---------------------------------------------
+        ITEM               QTY   PRICE   TOTAL
+        ---------------------------------------------
+        Chips               2     200Rs    400Rs
+Coffee              1     300Rs    300Rs
+Cookies             1     300Rs    300Rs
+Croissant           1     300Rs    300Rs
+French Toast        1     700Rs    700Rs
+Fresh Juice         1     400Rs    400Rs
+Iced Latte          1     400Rs    400Rs
+Milkshake           1     500Rs    500Rs
+Muffin              1     300Rs    300Rs
+Pancakes            1     600Rs    600Rs
+---------------------------------------------
+                                TOTAL: 4200.00Rs
+=============================================
+Thank you for your purchase!
+       CafePOS Pro v1.0

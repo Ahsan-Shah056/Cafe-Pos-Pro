@@ -1,0 +1,17 @@
+
+        NATIONAL UNIVERSITY - ISLAMABAD CAMPUS
+        =============================================
+        Date: 2025-04-30 14:01:15
+        Customer: i235508@isb.nu.edu.pk
+        ---------------------------------------------
+        ITEM               QTY   PRICE   TOTAL
+        ---------------------------------------------
+        Croissant           1     300Rs    300Rs
+Iced Coffee         1     400Rs    400Rs
+Milkshake           1     500Rs    500Rs
+Sandwich            1     500Rs    500Rs
+---------------------------------------------
+                                TOTAL: 1700.00Rs
+=============================================
+Thank you for your purchase!
+       CafePOS Pro v1.0

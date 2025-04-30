@@ -1,0 +1,15 @@
+
+        NATIONAL UNIVERSITY - ISLAMABAD CAMPUS
+        =============================================
+        Date: 2025-04-30 12:58:06
+        Customer: i235508@isb.nu.edu.pk
+        ---------------------------------------------
+        ITEM               QTY   PRICE   TOTAL
+        ---------------------------------------------
+        Iced Coffee         1     400Rs    400Rs
+Iced Latte          1     400Rs    400Rs
+---------------------------------------------
+                                TOTAL: 800.00Rs
+=============================================
+Thank you for your purchase!
+       CafePOS Pro v1.0
