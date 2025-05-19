@@ -48,8 +48,12 @@
 - **Email Receipts:**
   - Sends receipts directly to the customer's university email (Gmail SMTP, configurable).
 - **Admin Panel:**
-  - User management: search, view, edit, delete users.
-  - Transaction history: view all transactions, filter/search.
+  - User management: search, view, edit, delete users, **undo delete** with a popup.
+  - Transaction history: view all transactions, filter/search, **download as CSV**.
+  - **Top Items Analytics:**
+    - View top sold items with a popup table.
+    - **Show All** or top 5, search/filter by item name, sort columns, and **export as CSV**.
+  - **Interactive Dashboard:** visually appealing, clickable metric cards for users, sales, transactions, and top item.
 - **Data Persistence:**
   - All user and transaction data stored in `pos_users.json`.
   - Email config in `config.json`.
@@ -96,9 +100,17 @@ python3 E_Recipts_POS.py
    - Click **Admin Panel** (top right).
 2. **User Management:**
    - Search, view, edit, or delete users.
+   - **Undo** a user delete within a few seconds.
    - View user details and transaction history.
+   - Export a user's transactions as CSV.
 3. **Transaction History:**
    - Browse all transactions, filter/search as needed.
+   - Download all transactions as CSV.
+4. **Top Items Analytics:**
+   - Click **View Top Items** in the Transaction History tab.
+   - See a sortable, searchable table of top sold items.
+   - Toggle between top 5 and all items.
+   - Export the displayed items as CSV.
 
 ---
 

@@ -1,10 +1,13 @@
 import tkinter as tk
-from tkinter import ttk, messagebox, scrolledtext, simpledialog
+from tkinter import ttk, messagebox, scrolledtext, simpledialog, filedialog
 import json
 import os
 import smtplib
 from email.mime.text import MIMEText
 from datetime import datetime
+import csv
+import sys
+import threading
 
 class CafeteriaPOS:
     def __init__(self, root):
@@ -36,9 +39,9 @@ class CafeteriaPOS:
         self.style.configure('Header.TLabel', font=('Helvetica', 15, 'bold'), foreground='#2c3e50')
         self.style.configure('Subheader.TLabel', font=('Helvetica', 10), foreground='#7f8c8d')
         self.style.configure('Item.TButton', 
-                       font=('Arial', 34, 'bold'),  # Increased from 14 to 16
+                       font=('Arial', 34, 'bold'),  # Increased from 24 to 34
                        width=22, 
-                       padding=18,  # Increased from 10 to 12
+                       padding=18,  # Increased from 10 to 18
                        borderwidth=1, 
                        relief='raised')
         self.style.configure('Total.TLabel', font=('Helvetica', 15, 'bold'), foreground='#c0392b')
@@ -80,7 +83,7 @@ class CafeteriaPOS:
         customer_frame = ttk.Frame(main_frame, padding=10, relief='ridge', borderwidth=2)
         customer_frame.grid(row=0, column=0, columnspan=4, sticky='ew', pady=(0, 15))
 
-        ttk.Label(customer_frame, text="Fast NU Islamabad POS System", style='Header.TLabel').grid(row=0, column=0, columnspan=4, sticky='w')
+        ttk.Label(customer_frame, text="Fast NUCES Islamabad POS System", style='Header.TLabel').grid(row=0, column=0, columnspan=4, sticky='w')
         ttk.Label(customer_frame, text="Enter Roll Number:", style='Subheader.TLabel').grid(row=1, column=0, sticky='w')
         
         self.customer_id = ttk.Entry(customer_frame, width=25, font=('Arial', 11))
@@ -449,7 +452,6 @@ class CafeteriaPOS:
 
     def create_dashboard_tab(self, parent):
         # Visually appealing, interactive dashboard with responsive metric cards
-        import sys
         frame = ttk.Frame(parent, padding=30)
         frame.pack(fill=tk.BOTH, expand=True)
         ttk.Label(frame, text="Admin Dashboard", style='Header.TLabel').pack(anchor='center', pady=(0,30))
@@ -572,17 +574,23 @@ class CafeteriaPOS:
 
     def sort_tree(self, tree, col, numeric):
         # Sort treeview by column
+        def parse_numeric(val):
+            # Remove currency symbols and commas, then convert
+            if isinstance(val, str):
+                val = val.replace('$', '').replace('Rs', '').replace(',', '').strip()
+            try:
+                return float(val)
+            except Exception:
+                return 0
         data = [(tree.set(k, col), k) for k in tree.get_children('')]
         if numeric:
-            data.sort(key=lambda t: float(t[0]) if t[0] else 0)
+            data.sort(key=lambda t: parse_numeric(t[0]))
         else:
             data.sort()
         for index, (val, k) in enumerate(data):
             tree.move(k, '', index)
 
     def download_transactions_csv(self):
-        import csv
-        from tkinter import filedialog
         file = filedialog.asksaveasfilename(defaultextension='.csv', filetypes=[('CSV files', '*.csv')])
         if not file:
             return
@@ -594,19 +602,88 @@ class CafeteriaPOS:
         messagebox.showinfo("Export Complete", "Transactions exported as CSV.")
 
     def show_top_items_popup(self):
-        # Show a popup with top 5 sold items
+        # Show a popup with top sold items in a table format, with search, show all, sort, and export
         item_counter = {}
         for user in self.users.values():
             for t in user['transactions']:
                 for item, details in t['items'].items():
                     item_counter[item] = item_counter.get(item, 0) + details['quantity']
-        top_items = sorted(item_counter.items(), key=lambda x: x[1], reverse=True)[:5]
+        sorted_items = sorted(item_counter.items(), key=lambda x: x[1], reverse=True)
+        show_all = {'value': False}
+        filter_text = {'value': ''}
         popup = tk.Toplevel(self.root)
-        popup.title("Top 5 Sold Items")
-        ttk.Label(popup, text="Top 5 Sold Items", style='Header.TLabel').pack(pady=10)
-        for item, qty in top_items:
-            ttk.Label(popup, text=f"{item}: {qty} sold", style='Subheader.TLabel').pack(anchor='w', padx=20)
-        ttk.Button(popup, text="Close", command=popup.destroy).pack(pady=10)
+        popup.title("Top Sold Items")
+        popup.geometry("400x400")
+        popup.minsize(350, 250)
+        popup.resizable(True, True)
+        frame = ttk.Frame(popup, padding=20)
+        frame.pack(fill=tk.BOTH, expand=True)
+        ttk.Label(frame, text="Top Sold Items", style='Header.TLabel').pack(anchor='center', pady=(0, 10))
+        # Search bar
+        search_frame = ttk.Frame(frame)
+        search_frame.pack(fill=tk.X, pady=(0, 10))
+        ttk.Label(search_frame, text="Search:").pack(side=tk.LEFT)
+        search_entry = ttk.Entry(search_frame, width=25)
+        search_entry.pack(side=tk.LEFT, padx=5)
+        # Table
+        columns = ("Item", "Quantity Sold")
+        tree = ttk.Treeview(frame, columns=columns, show='headings', height=10)
+        tree.heading("Item", text="Item", command=lambda: sort_table('Item', False))
+        tree.heading("Quantity Sold", text="Quantity Sold", command=lambda: sort_table('Quantity Sold', True))
+        tree.column("Item", width=180, anchor='w')
+        tree.column("Quantity Sold", width=100, anchor='center')
+        vsb = ttk.Scrollbar(frame, orient="vertical", command=tree.yview)
+        tree.configure(yscrollcommand=vsb.set)
+        tree.pack(fill=tk.BOTH, expand=True, pady=(0, 10), side=tk.LEFT)
+        vsb.pack(side=tk.RIGHT, fill=tk.Y)
+        # Helper to populate table
+        def populate_table():
+            tree.delete(*tree.get_children())
+            items = sorted_items if show_all['value'] else sorted_items[:5]
+            if filter_text['value']:
+                items = [x for x in items if filter_text['value'].lower() in x[0].lower()]
+            for item, qty in items:
+                tree.insert('', 'end', values=(item, qty))
+        # Sorting
+        def sort_table(col, numeric):
+            data = [(tree.set(k, col), k) for k in tree.get_children('')]
+            if numeric:
+                data.sort(key=lambda t: float(t[0]) if t[0] else 0, reverse=True)
+            else:
+                data.sort(reverse=False)
+            for index, (val, k) in enumerate(data):
+                tree.move(k, '', index)
+        # Search event
+        def on_search(*args):
+            filter_text['value'] = search_entry.get()
+            populate_table()
+        search_entry.bind('<KeyRelease>', on_search)
+        # Show All button
+        def toggle_show_all():
+            show_all['value'] = not show_all['value']
+            show_btn.config(text="Show Top 5" if show_all['value'] else "Show All")
+            populate_table()
+        show_btn = ttk.Button(frame, text="Show All", command=toggle_show_all)
+        show_btn.pack(side=tk.LEFT, pady=5, padx=(0, 5), anchor='w')
+        # Export as CSV
+        def export_csv():
+            file = filedialog.asksaveasfilename(defaultextension='.csv', filetypes=[('CSV files', '*.csv')], title='Export Top Items')
+            if not file:
+                return
+            items = sorted_items if show_all['value'] else sorted_items[:5]
+            if filter_text['value']:
+                items = [x for x in items if filter_text['value'].lower() in x[0].lower()]
+            with open(file, 'w', newline='') as f:
+                writer = csv.writer(f)
+                writer.writerow(['Item', 'Quantity Sold'])
+                for item, qty in items:
+                    writer.writerow([item, qty])
+            messagebox.showinfo("Export Complete", "Top items exported as CSV.")
+        export_btn = ttk.Button(frame, text="Export as CSV", command=export_csv)
+        export_btn.pack(side=tk.LEFT, pady=5, padx=(0, 5), anchor='w')
+        # Close button
+        ttk.Button(frame, text="Close", command=popup.destroy).pack(side=tk.RIGHT, pady=5, anchor='e')
+        populate_table()
 
     def search_user(self):
         query = self.search_entry.get().lower()
@@ -653,30 +730,96 @@ class CafeteriaPOS:
         user_data = self.users[user_id]
         details_window = tk.Toplevel(self.root)
         details_window.title(f"User Details - {user_id}")
-        details_window.geometry("700x500")
+        details_window.geometry("800x550")
+        details_window.minsize(600, 350)
         details_window.resizable(True, True)
         main_frame = ttk.Frame(details_window, padding=20)
-        main_frame.pack(fill=tk.BOTH, expand=True)
+        main_frame.grid(row=0, column=0, sticky='nsew')
+        details_window.grid_rowconfigure(0, weight=1)
+        details_window.grid_columnconfigure(0, weight=1)
         # User Info Section
-        ttk.Label(main_frame, text=f"User ID: {user_id}", font=('Helvetica', 13, 'bold')).pack(anchor='w', pady=(0,2))
-        ttk.Label(main_frame, text=f"First Seen: {user_data['first_seen']}", font=('Helvetica', 11)).pack(anchor='w', pady=(0,2))
-        ttk.Label(main_frame, text=f"Total Transactions: {len(user_data['transactions'])}", font=('Helvetica', 11)).pack(anchor='w', pady=(0,10))
-        ttk.Separator(main_frame, orient='horizontal').pack(fill=tk.X, pady=5)
+        info_frame = ttk.Frame(main_frame)
+        info_frame.grid(row=0, column=0, sticky='ew', pady=(0, 10))
+        info_frame.grid_columnconfigure(0, weight=1)
+        ttk.Label(info_frame, text=f"User ID: {user_id}", font=('Helvetica', 13, 'bold')).grid(row=0, column=0, sticky='w')
+        ttk.Label(info_frame, text=f"First Seen: {user_data['first_seen']}", font=('Helvetica', 11)).grid(row=1, column=0, sticky='w')
+        ttk.Label(info_frame, text=f"Total Transactions: {len(user_data['transactions'])}", font=('Helvetica', 11)).grid(row=2, column=0, sticky='w')
+        # Export Button
+        export_btn = ttk.Button(info_frame, text="Export Transactions", command=lambda: self.export_user_transactions(user_id))
+        export_btn.grid(row=0, column=1, rowspan=3, padx=10, sticky='e')
+        # Separator
+        ttk.Separator(main_frame, orient='horizontal').grid(row=1, column=0, sticky='ew', pady=5)
+        # Search Bar
+        search_frame = ttk.Frame(main_frame)
+        search_frame.grid(row=2, column=0, sticky='ew', pady=(0, 5))
+        ttk.Label(search_frame, text="Search:").pack(side=tk.LEFT)
+        search_entry = ttk.Entry(search_frame, width=40)
+        search_entry.pack(side=tk.LEFT, padx=5)
         # Transactions Section
-        ttk.Label(main_frame, text="Transactions", font=('Helvetica', 12, 'bold')).pack(anchor='w', pady=(5,5))
+        table_frame = ttk.Frame(main_frame)
+        table_frame.grid(row=3, column=0, sticky='nsew')
+        main_frame.grid_rowconfigure(3, weight=1)
+        main_frame.grid_columnconfigure(0, weight=1)
         columns = ("Date", "Total", "Items")
-        tree = ttk.Treeview(main_frame, columns=columns, show='headings', height=12)
-        tree.heading("Date", text="Date/Time")
-        tree.heading("Total", text="Total (Rs)")
+        tree = ttk.Treeview(table_frame, columns=columns, show='headings')
+        tree.heading("Date", text="Date/Time", command=lambda: self.sort_user_transactions(tree, 0, False))
+        tree.heading("Total", text="Total (Rs)", command=lambda: self.sort_user_transactions(tree, 1, True))
         tree.heading("Items", text="Items")
-        tree.column("Date", width=150)
-        tree.column("Total", width=100)
-        tree.column("Items", width=400)
-        for trans in user_data['transactions']:
-            items = ", ".join([f"{item} x{details['quantity']}" for item, details in trans['items'].items()])
-            tree.insert('', 'end', values=(trans['timestamp'], f"{trans['total']:.2f}", items))
-        tree.pack(fill=tk.BOTH, expand=True, pady=(0,10))
-        ttk.Button(main_frame, text="Close", command=details_window.destroy).pack(pady=10)
+        tree.column("Date", width=150, anchor='center')
+        tree.column("Total", width=100, anchor='center')
+        tree.column("Items", width=400, anchor='w')
+        vsb = ttk.Scrollbar(table_frame, orient="vertical", command=tree.yview)
+        tree.configure(yscrollcommand=vsb.set)
+        tree.grid(row=0, column=0, sticky='nsew')
+        vsb.grid(row=0, column=1, sticky='ns')
+        table_frame.grid_rowconfigure(0, weight=1)
+        table_frame.grid_columnconfigure(0, weight=1)
+        # Populate transactions
+        def populate_tree(filter_text=None):
+            tree.delete(*tree.get_children())
+            for trans in user_data['transactions']:
+                items = ", ".join([f"{item} x{details['quantity']}" for item, details in trans['items'].items()])
+                if filter_text:
+                    if (filter_text.lower() not in trans['timestamp'].lower() and
+                        filter_text.lower() not in items.lower() and
+                        filter_text.lower() not in str(trans['total'])):
+                        continue
+                tree.insert('', 'end', values=(trans['timestamp'], f"{trans['total']:.2f}", items))
+        populate_tree()
+        def on_search(*args):
+            populate_tree(search_entry.get())
+        search_entry.bind('<KeyRelease>', on_search)
+        # Responsive resizing
+        details_window.grid_rowconfigure(0, weight=1)
+        details_window.grid_columnconfigure(0, weight=1)
+        main_frame.grid_rowconfigure(3, weight=1)
+        main_frame.grid_columnconfigure(0, weight=1)
+        table_frame.grid_rowconfigure(0, weight=1)
+        table_frame.grid_columnconfigure(0, weight=1)
+        # Close Button
+        ttk.Button(main_frame, text="Close", command=details_window.destroy).grid(row=4, column=0, pady=10, sticky='e')
+
+    def export_user_transactions(self, user_id):
+        user_data = self.users[user_id]
+        file = filedialog.asksaveasfilename(defaultextension='.csv', filetypes=[('CSV files', '*.csv')], title='Export User Transactions')
+        if not file:
+            return
+        with open(file, 'w', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow(['Date/Time', 'Total (Rs)', 'Items'])
+            for trans in user_data['transactions']:
+                items = ", ".join([f"{item} x{details['quantity']}" for item, details in trans['items'].items()])
+                writer.writerow([trans['timestamp'], f"{trans['total']:.2f}", items])
+        messagebox.showinfo("Export Complete", f"Transactions for {user_id} exported as CSV.")
+
+    def sort_user_transactions(self, tree, col_idx, numeric):
+        data = [(tree.set(k, tree['columns'][col_idx]), k) for k in tree.get_children('')]
+        if numeric:
+            data.sort(key=lambda t: float(t[0]) if t[0] else 0)
+        else:
+            data.sort()
+        for index, (val, k) in enumerate(data):
+            tree.move(k, '', index)
 
     def edit_user(self):
         selected = self.user_tree.selection()
@@ -723,13 +866,29 @@ class CafeteriaPOS:
         if not selected:
             messagebox.showwarning("Selection Error", "Please select a user first")
             return
-            
         user_id = self.user_tree.item(selected[0])['values'][0]
-        
+        # Store for undo
+        deleted_user = {'id': user_id, 'data': self.users[user_id]}
         if messagebox.askyesno("Confirm Delete", f"Are you sure you want to delete user {user_id}?"):
             del self.users[user_id]
             self.save_users()
             self.refresh_user_list()
+            # Show undo option
+            undo_popup = tk.Toplevel(self.root)
+            undo_popup.title("Undo Delete")
+            undo_popup.geometry("300x100")
+            ttk.Label(undo_popup, text=f"User {user_id} deleted.").pack(pady=10)
+            def undo():
+                self.users[deleted_user['id']] = deleted_user['data']
+                self.save_users()
+                self.refresh_user_list()
+                undo_popup.destroy()
+                messagebox.showinfo("Undo", f"User {user_id} restored.")
+            ttk.Button(undo_popup, text="Undo", command=undo).pack(pady=5)
+            # Auto-close after 5 seconds
+            def close_after_delay():
+                undo_popup.after(5000, lambda: undo_popup.destroy())
+            threading.Thread(target=close_after_delay, daemon=True).start()
             messagebox.showinfo("Success", "User deleted successfully")
 
 if __name__ == "__main__":

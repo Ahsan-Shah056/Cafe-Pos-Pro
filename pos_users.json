@@ -1,70 +1,4 @@
 {
-  "i236789@isb.nu.edu.pk": {
-    "first_seen": "2025-04-05",
-    "transactions": [
-      {
-        "timestamp": "2025-04-05 04:58:55",
-        "items": {
-          "Coffee": {
-            "price": 300,
-            "quantity": 1
-          },
-          "Muffin": {
-            "price": 300,
-            "quantity": 1
-          }
-        },
-        "total": 600
-      },
-      {
-        "timestamp": "2025-04-18 10:15:32",
-        "items": {
-          "Tea": {
-            "price": 200,
-            "quantity": 1
-          },
-          "Sandwich": {
-            "price": 500,
-            "quantity": 1
-          }
-        },
-        "total": 700
-      }
-    ]
-  },
-  "i231234@isb.nu.edu.pk": {
-    "first_seen": "2025-04-05",
-    "transactions": [
-      {
-        "timestamp": "2025-04-10 16:42:18",
-        "items": {
-          "Latte": {
-            "price": 400,
-            "quantity": 1
-          },
-          "Donut": {
-            "price": 300,
-            "quantity": 1
-          }
-        },
-        "total": 700
-      },
-      {
-        "timestamp": "2025-04-22 08:29:41",
-        "items": {
-          "Iced Coffee": {
-            "price": 400,
-            "quantity": 1
-          },
-          "Pizza Slice": {
-            "price": 500,
-            "quantity": 1
-          }
-        },
-        "total": 900
-      }
-    ]
-  },
   "i239876@isb.nu.edu.pk": {
     "first_seen": "2025-04-05",
     "transactions": [
@@ -1276,6 +1210,72 @@
           }
         },
         "total": 2100.0
+      }
+    ]
+  },
+  "i236789@isb.nu.edu.pk": {
+    "first_seen": "2025-04-05",
+    "transactions": [
+      {
+        "timestamp": "2025-04-05 04:58:55",
+        "items": {
+          "Coffee": {
+            "price": 300,
+            "quantity": 1
+          },
+          "Muffin": {
+            "price": 300,
+            "quantity": 1
+          }
+        },
+        "total": 600
+      },
+      {
+        "timestamp": "2025-04-18 10:15:32",
+        "items": {
+          "Tea": {
+            "price": 200,
+            "quantity": 1
+          },
+          "Sandwich": {
+            "price": 500,
+            "quantity": 1
+          }
+        },
+        "total": 700
+      }
+    ]
+  },
+  "i231234@isb.nu.edu.pk": {
+    "first_seen": "2025-04-05",
+    "transactions": [
+      {
+        "timestamp": "2025-04-10 16:42:18",
+        "items": {
+          "Latte": {
+            "price": 400,
+            "quantity": 1
+          },
+          "Donut": {
+            "price": 300,
+            "quantity": 1
+          }
+        },
+        "total": 700
+      },
+      {
+        "timestamp": "2025-04-22 08:29:41",
+        "items": {
+          "Iced Coffee": {
+            "price": 400,
+            "quantity": 1
+          },
+          "Pizza Slice": {
+            "price": 500,
+            "quantity": 1
+          }
+        },
+        "total": 900
       }
     ]
   }
