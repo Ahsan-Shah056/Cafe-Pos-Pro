@@ -9,7 +9,7 @@ from datetime import datetime
 class CafeteriaPOS:
     def __init__(self, root):
         self.root = root
-        self.root.title("CafePOS Pro - NU Islamabad")
+        self.root.title("CafePOS Pro - NUCES Islamabad")
         self.root.geometry("1200x800")
         self.root.configure(bg='#f5f5f5')
 
@@ -349,66 +349,81 @@ class CafeteriaPOS:
     def show_admin_panel(self):
         admin_window = tk.Toplevel(self.root)
         admin_window.title("Admin Panel")
-        admin_window.geometry("1000x700")
+        admin_window.geometry("1100x750")
         admin_window.resizable(True, True)
 
         # Create notebook for admin tabs
         notebook = ttk.Notebook(admin_window)
         notebook.pack(fill=tk.BOTH, expand=True)
 
+        # Dashboard Tab
+        dashboard_tab = ttk.Frame(notebook)
+        notebook.add(dashboard_tab, text="Dashboard")
+        self.create_dashboard_tab(dashboard_tab)
+
         # User Management Tab
         user_tab = ttk.Frame(notebook)
         notebook.add(user_tab, text="User Management")
 
-        # Search Frame
-        search_frame = ttk.Frame(user_tab, padding=10)
-        search_frame.pack(fill=tk.X)
+        # Section Header
+        ttk.Label(user_tab, text="User Management", style='Header.TLabel').pack(anchor='w', padx=10, pady=(10,0))
 
+        # Search and Actions Frame (grouped)
+        top_frame = ttk.Frame(user_tab, padding=10)
+        top_frame.pack(fill=tk.X)
+        search_frame = ttk.Frame(top_frame)
+        search_frame.pack(side=tk.LEFT, fill=tk.X, expand=True)
         ttk.Label(search_frame, text="Search User:").pack(side=tk.LEFT)
         self.search_entry = ttk.Entry(search_frame, width=40)
         self.search_entry.pack(side=tk.LEFT, padx=5)
         ttk.Button(search_frame, text="Search", command=self.search_user).pack(side=tk.LEFT, padx=5)
         ttk.Button(search_frame, text="Refresh", command=self.refresh_user_list).pack(side=tk.LEFT)
+        action_frame = ttk.Frame(top_frame)
+        action_frame.pack(side=tk.RIGHT)
+        ttk.Button(action_frame, text="View Details", command=self.view_user_details).pack(side=tk.LEFT, padx=5)
+        ttk.Button(action_frame, text="Edit User", command=self.edit_user).pack(side=tk.LEFT, padx=5)
+        ttk.Button(action_frame, text="Delete User", command=self.delete_user).pack(side=tk.LEFT, padx=5)
 
         # User List Frame
         list_frame = ttk.Frame(user_tab)
         list_frame.pack(fill=tk.BOTH, expand=True, pady=10)
 
-        # Treeview for users
-        self.user_tree = ttk.Treeview(list_frame, columns=('email', 'first_seen', 'transactions'), show='headings')
-        self.user_tree.heading('email', text='Email/Roll No')
-        self.user_tree.heading('first_seen', text='First Seen')
-        self.user_tree.heading('transactions', text='Transactions')
+        # Summary label
+        self.user_summary_label = ttk.Label(list_frame, text=f"Total Users: {len(self.users)}", style='Subheader.TLabel')
+        self.user_summary_label.pack(anchor='w', padx=5, pady=(0,5))
+
+        # Treeview for users with striped rows
+        self.user_tree = ttk.Treeview(list_frame, columns=('email', 'first_seen', 'transactions'), show='headings', selectmode='browse')
+        self.user_tree.heading('email', text='Email/Roll No', command=lambda: self.sort_tree(self.user_tree, 'email', False))
+        self.user_tree.heading('first_seen', text='First Seen', command=lambda: self.sort_tree(self.user_tree, 'first_seen', False))
+        self.user_tree.heading('transactions', text='Transactions', command=lambda: self.sort_tree(self.user_tree, 'transactions', True))
         self.user_tree.column('email', width=250)
         self.user_tree.column('first_seen', width=100)
         self.user_tree.column('transactions', width=100)
-
+        self.user_tree.tag_configure('oddrow', background='#f0f4f8')
+        self.user_tree.tag_configure('evenrow', background='#ffffff')
         vsb = ttk.Scrollbar(list_frame, orient="vertical", command=self.user_tree.yview)
         hsb = ttk.Scrollbar(list_frame, orient="horizontal", command=self.user_tree.xview)
         self.user_tree.configure(yscrollcommand=vsb.set, xscrollcommand=hsb.set)
-
-        self.user_tree.grid(row=0, column=0, sticky='nsew')
-        vsb.grid(row=0, column=1, sticky='ns')
-        hsb.grid(row=1, column=0, sticky='ew')
-
-        # Action Buttons
-        action_frame = ttk.Frame(user_tab)
-        action_frame.pack(fill=tk.X, pady=5)
-
-        ttk.Button(action_frame, text="View Details", command=self.view_user_details).pack(side=tk.LEFT, padx=5)
-        ttk.Button(action_frame, text="Edit User", command=self.edit_user).pack(side=tk.LEFT, padx=5)
-        ttk.Button(action_frame, text="Delete User", command=self.delete_user).pack(side=tk.LEFT, padx=5)
+        self.user_tree.pack(fill=tk.BOTH, expand=True, side=tk.LEFT)
+        vsb.pack(side=tk.RIGHT, fill=tk.Y)
+        hsb.pack(side=tk.BOTTOM, fill=tk.X)
+        self.user_tree.bind('<Double-1>', lambda e: self.view_user_details())
+        self.refresh_user_list()
 
         # Transaction History Tab
         history_tab = ttk.Frame(notebook)
         notebook.add(history_tab, text="Transaction History")
 
+        # Section Header
+        ttk.Label(history_tab, text="Transaction History", style='Header.TLabel').pack(anchor='w', padx=10, pady=(10,0))
+
         # History Treeview
         self.history_tree = ttk.Treeview(history_tab, columns=('date', 'customer', 'items', 'total'), show='headings')
-        self.history_tree.heading('date', text='Date/Time')
-        self.history_tree.heading('customer', text='Customer')
+        self.history_tree.heading('date', text='Date/Time', command=lambda: self.sort_tree(self.history_tree, 'date', False))
+        self.history_tree.heading('customer', text='Customer', command=lambda: self.sort_tree(self.history_tree, 'customer', False))
         self.history_tree.heading('items', text='Items')
-        self.history_tree.heading('total', text='Total')
+        self.history_tree.heading('total', text='Total', command=lambda: self.sort_tree(self.history_tree, 'total', True))
         self.history_tree.column('date', width=150)
         self.history_tree.column('customer', width=200)
         self.history_tree.column('items', width=400)
@@ -422,9 +437,176 @@ class CafeteriaPOS:
         vsb_history.pack(side=tk.RIGHT, fill=tk.Y)
         hsb_history.pack(side=tk.BOTTOM, fill=tk.X)
 
+        # Download CSV and Top Items Buttons
+        btns_frame = ttk.Frame(history_tab)
+        btns_frame.pack(fill=tk.X, pady=5)
+        ttk.Button(btns_frame, text="Download CSV", command=self.download_transactions_csv).pack(side=tk.LEFT, padx=5)
+        ttk.Button(btns_frame, text="View Top Items", command=self.show_top_items_popup).pack(side=tk.LEFT, padx=5)
+
         # Load data
         self.refresh_user_list()
         self.load_transaction_history()
+
+    def create_dashboard_tab(self, parent):
+        # Visually appealing, interactive dashboard with responsive metric cards
+        import sys
+        frame = ttk.Frame(parent, padding=30)
+        frame.pack(fill=tk.BOTH, expand=True)
+        ttk.Label(frame, text="Admin Dashboard", style='Header.TLabel').pack(anchor='center', pady=(0,30))
+        stats = self.get_dashboard_stats()
+        cards_frame = tk.Frame(frame, bg='#f5f5f5')
+        cards_frame.pack(anchor='center', pady=20, expand=True)
+        # Card styles and icons (using emoji for simplicity)
+        card_styles = [
+            {'title': 'Total Users', 'value': stats['users'], 'color': '#3498db', 'icon': '👤'},
+            {'title': 'Total Sales', 'value': f"{stats['sales']} Rs", 'color': '#27ae60', 'icon': '💰'},
+            {'title': 'Total Transactions', 'value': stats['transactions'], 'color': '#e67e22', 'icon': '🧾'},
+            {'title': 'Top Item', 'value': stats['top_item'], 'color': '#9b59b6', 'icon': '⭐'},
+        ]
+        card_widgets = []
+        for i, card in enumerate(card_styles):
+            card_frame = tk.Frame(cards_frame, bg=card['color'], bd=0, relief='ridge', cursor='hand2', highlightthickness=0)
+            card_frame.grid(row=0, column=i, padx=25, ipadx=40, ipady=40, sticky='nsew')
+            # Icon
+            tk.Label(card_frame, text=card['icon'], font=('Arial', 38), fg='white', bg=card['color']).pack(pady=(0,5))
+            # Title
+            tk.Label(card_frame, text=card['title'], font=('Helvetica', 16, 'bold'), fg='white', bg=card['color']).pack()
+            # Value
+            tk.Label(card_frame, text=card['value'], font=('Helvetica', 26, 'bold'), fg='white', bg=card['color']).pack(pady=(10,0))
+            # Shadow effect
+            card_frame.config(highlightbackground='#888', highlightcolor='#888', highlightthickness=2)
+            # Hover effect
+            def on_enter(e, w=card_frame, c=card['color']):
+                w.config(bg='#222222')
+                for child in w.winfo_children():
+                    child.config(bg='#222222')
+            def on_leave(e, w=card_frame, c=card['color']):
+                w.config(bg=c)
+                for child in w.winfo_children():
+                    child.config(bg=c)
+            card_frame.bind('<Enter>', on_enter)
+            card_frame.bind('<Leave>', on_leave)
+            for widget in card_frame.winfo_children():
+                widget.bind('<Enter>', on_enter)
+                widget.bind('<Leave>', on_leave)
+            card_frame.bind('<Button-1>', lambda e, idx=i: self.show_metric_details(idx))
+            for widget in card_frame.winfo_children():
+                widget.bind('<Button-1>', lambda e, idx=i: self.show_metric_details(idx))
+            card_widgets.append(card_frame)
+        # Responsive layout
+        for i in range(len(card_styles)):
+            cards_frame.grid_columnconfigure(i, weight=1)
+        cards_frame.grid_rowconfigure(0, weight=1)
+
+    def show_metric_details(self, idx):
+        stats = self.get_dashboard_stats()
+        popup = tk.Toplevel(self.root)
+        popup.title("Metric Details")
+        popup.geometry("500x500")
+        popup.resizable(True, True)
+        ttk.Label(popup, text="Metric Details", style='Header.TLabel').pack(pady=(10, 0))
+        content_frame = ttk.Frame(popup, padding=15)
+        content_frame.pack(fill=tk.BOTH, expand=True)
+        if idx == 0:
+            # Total Users detail
+            ttk.Label(content_frame, text=f"Total Users: {stats['users']}", font=('Helvetica', 14, 'bold')).pack(anchor='w', pady=(0,10))
+            tree = ttk.Treeview(content_frame, columns=("UserID",), show='headings', height=15)
+            tree.heading("UserID", text="User ID / Email")
+            for user in self.users.keys():
+                tree.insert('', 'end', values=(user,))
+            tree.pack(fill=tk.BOTH, expand=True)
+        elif idx == 1:
+            # Total Sales detail
+            ttk.Label(content_frame, text=f"Total Sales: {stats['sales']} Rs", font=('Helvetica', 14, 'bold')).pack(anchor='w', pady=(0,10))
+            tree = ttk.Treeview(content_frame, columns=("UserID", "Sales"), show='headings', height=15)
+            tree.heading("UserID", text="User ID / Email")
+            tree.heading("Sales", text="Total Sales (Rs)")
+            for user, data in self.users.items():
+                user_total = sum(t['total'] for t in data['transactions'])
+                tree.insert('', 'end', values=(user, user_total))
+            tree.pack(fill=tk.BOTH, expand=True)
+        elif idx == 2:
+            # Total Transactions detail
+            ttk.Label(content_frame, text=f"Total Transactions: {stats['transactions']}", font=('Helvetica', 14, 'bold')).pack(anchor='w', pady=(0,10))
+            tree = ttk.Treeview(content_frame, columns=("UserID", "Transactions"), show='headings', height=15)
+            tree.heading("UserID", text="User ID / Email")
+            tree.heading("Transactions", text="# Transactions")
+            for user, data in self.users.items():
+                tree.insert('', 'end', values=(user, len(data['transactions'])))
+            tree.pack(fill=tk.BOTH, expand=True)
+        else:
+            # Top Item detail
+            item_counter = {}
+            for user in self.users.values():
+                for t in user['transactions']:
+                    for item, details in t['items'].items():
+                        item_counter[item] = item_counter.get(item, 0) + details['quantity']
+            sorted_items = sorted(item_counter.items(), key=lambda x: x[1], reverse=True)
+            ttk.Label(content_frame, text="Top Sold Items", font=('Helvetica', 14, 'bold')).pack(anchor='w', pady=(0,10))
+            tree = ttk.Treeview(content_frame, columns=("Item", "Quantity"), show='headings', height=15)
+            tree.heading("Item", text="Item")
+            tree.heading("Quantity", text="Quantity Sold")
+            for item, qty in sorted_items[:10]:
+                tree.insert('', 'end', values=(item, qty))
+            tree.pack(fill=tk.BOTH, expand=True)
+        ttk.Button(popup, text="Close", command=popup.destroy).pack(pady=10)
+
+    def get_dashboard_stats(self):
+        total_users = len(self.users)
+        total_sales = 0
+        total_transactions = 0
+        item_counter = {}
+        for user in self.users.values():
+            for t in user['transactions']:
+                total_sales += t['total']
+                total_transactions += 1
+                for item, details in t['items'].items():
+                    item_counter[item] = item_counter.get(item, 0) + details['quantity']
+        top_item = max(item_counter, key=item_counter.get) if item_counter else 'N/A'
+        return {
+            'users': total_users,
+            'sales': total_sales,
+            'transactions': total_transactions,
+            'top_item': top_item
+        }
+
+    def sort_tree(self, tree, col, numeric):
+        # Sort treeview by column
+        data = [(tree.set(k, col), k) for k in tree.get_children('')]
+        if numeric:
+            data.sort(key=lambda t: float(t[0]) if t[0] else 0)
+        else:
+            data.sort()
+        for index, (val, k) in enumerate(data):
+            tree.move(k, '', index)
+
+    def download_transactions_csv(self):
+        import csv
+        from tkinter import filedialog
+        file = filedialog.asksaveasfilename(defaultextension='.csv', filetypes=[('CSV files', '*.csv')])
+        if not file:
+            return
+        with open(file, 'w', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow(['Date/Time', 'Customer', 'Items', 'Total'])
+            for row in self.history_tree.get_children():
+                writer.writerow(self.history_tree.item(row)['values'])
+        messagebox.showinfo("Export Complete", "Transactions exported as CSV.")
+
+    def show_top_items_popup(self):
+        # Show a popup with top 5 sold items
+        item_counter = {}
+        for user in self.users.values():
+            for t in user['transactions']:
+                for item, details in t['items'].items():
+                    item_counter[item] = item_counter.get(item, 0) + details['quantity']
+        top_items = sorted(item_counter.items(), key=lambda x: x[1], reverse=True)[:5]
+        popup = tk.Toplevel(self.root)
+        popup.title("Top 5 Sold Items")
+        ttk.Label(popup, text="Top 5 Sold Items", style='Header.TLabel').pack(pady=10)
+        for item, qty in top_items:
+            ttk.Label(popup, text=f"{item}: {qty} sold", style='Subheader.TLabel').pack(anchor='w', padx=20)
+        ttk.Button(popup, text="Close", command=popup.destroy).pack(pady=10)
 
     def search_user(self):
         query = self.search_entry.get().lower()
@@ -440,12 +622,15 @@ class CafeteriaPOS:
 
     def refresh_user_list(self):
         self.user_tree.delete(*self.user_tree.get_children())
-        for user_id, data in self.users.items():
+        for idx, (user_id, data) in enumerate(self.users.items()):
+            tag = 'evenrow' if idx % 2 == 0 else 'oddrow'
             self.user_tree.insert('', 'end', values=(
                 user_id,
                 data['first_seen'],
                 len(data['transactions'])
-            ))
+            ), tags=(tag,))
+        if hasattr(self, 'user_summary_label'):
+            self.user_summary_label.config(text=f"Total Users: {len(self.users)}")
 
     def load_transaction_history(self):
         self.history_tree.delete(*self.history_tree.get_children())
@@ -464,40 +649,34 @@ class CafeteriaPOS:
         if not selected:
             messagebox.showwarning("Selection Error", "Please select a user first")
             return
-            
         user_id = self.user_tree.item(selected[0])['values'][0]
         user_data = self.users[user_id]
-        
         details_window = tk.Toplevel(self.root)
         details_window.title(f"User Details - {user_id}")
-        details_window.geometry("600x400")
-        
-        # Create notebook for details
-        notebook = ttk.Notebook(details_window)
-        notebook.pack(fill=tk.BOTH, expand=True)
-        
-        # Info Tab
-        info_tab = ttk.Frame(notebook)
-        notebook.add(info_tab, text="User Info")
-        
-        ttk.Label(info_tab, text=f"User ID: {user_id}").pack(anchor='w', pady=5)
-        ttk.Label(info_tab, text=f"First Seen: {user_data['first_seen']}").pack(anchor='w', pady=5)
-        ttk.Label(info_tab, text=f"Total Transactions: {len(user_data['transactions'])}").pack(anchor='w', pady=5)
-        
-        # Transactions Tab
-        trans_tab = ttk.Frame(notebook)
-        notebook.add(trans_tab, text="Transactions")
-        
-        trans_text = scrolledtext.ScrolledText(trans_tab, wrap=tk.WORD)
-        trans_text.pack(fill=tk.BOTH, expand=True)
-        
+        details_window.geometry("700x500")
+        details_window.resizable(True, True)
+        main_frame = ttk.Frame(details_window, padding=20)
+        main_frame.pack(fill=tk.BOTH, expand=True)
+        # User Info Section
+        ttk.Label(main_frame, text=f"User ID: {user_id}", font=('Helvetica', 13, 'bold')).pack(anchor='w', pady=(0,2))
+        ttk.Label(main_frame, text=f"First Seen: {user_data['first_seen']}", font=('Helvetica', 11)).pack(anchor='w', pady=(0,2))
+        ttk.Label(main_frame, text=f"Total Transactions: {len(user_data['transactions'])}", font=('Helvetica', 11)).pack(anchor='w', pady=(0,10))
+        ttk.Separator(main_frame, orient='horizontal').pack(fill=tk.X, pady=5)
+        # Transactions Section
+        ttk.Label(main_frame, text="Transactions", font=('Helvetica', 12, 'bold')).pack(anchor='w', pady=(5,5))
+        columns = ("Date", "Total", "Items")
+        tree = ttk.Treeview(main_frame, columns=columns, show='headings', height=12)
+        tree.heading("Date", text="Date/Time")
+        tree.heading("Total", text="Total (Rs)")
+        tree.heading("Items", text="Items")
+        tree.column("Date", width=150)
+        tree.column("Total", width=100)
+        tree.column("Items", width=400)
         for trans in user_data['transactions']:
-            trans_text.insert(tk.END, f"Date: {trans['timestamp']}\n")
-            trans_text.insert(tk.END, f"Total: ${trans['total']:.2f}\n")
-            trans_text.insert(tk.END, "Items:\n")
-            for item, details in trans['items'].items():
-                trans_text.insert(tk.END, f"  - {item} x{details['quantity']} @ ${details['price']:.2f}\n")
-            trans_text.insert(tk.END, "-"*40 + "\n")
+            items = ", ".join([f"{item} x{details['quantity']}" for item, details in trans['items'].items()])
+            tree.insert('', 'end', values=(trans['timestamp'], f"{trans['total']:.2f}", items))
+        tree.pack(fill=tk.BOTH, expand=True, pady=(0,10))
+        ttk.Button(main_frame, text="Close", command=details_window.destroy).pack(pady=10)
 
     def edit_user(self):
         selected = self.user_tree.selection()

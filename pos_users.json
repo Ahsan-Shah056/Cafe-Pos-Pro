@@ -1251,5 +1251,32 @@
         "total": 1600.0
       }
     ]
+  },
+  "i235035@isb.nu.edu.pk": {
+    "first_seen": "2025-05-14",
+    "transactions": [
+      {
+        "timestamp": "2025-05-14 12:52:38",
+        "items": {
+          "Coffee": {
+            "price": 300,
+            "quantity": 1
+          },
+          "Cappuccino": {
+            "price": 400,
+            "quantity": 1
+          },
+          "Burger": {
+            "price": 700,
+            "quantity": 1
+          },
+          "Salad": {
+            "price": 700,
+            "quantity": 1
+          }
+        },
+        "total": 2100.0
+      }
+    ]
   }
 }
