@@ -6,9 +6,9 @@
 [![Python](https://img.shields.io/badge/Python-3.x-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
 [![Tkinter](https://img.shields.io/badge/GUI-Tkinter-FF6B6B?style=for-the-badge&logo=python&logoColor=white)](https://docs.python.org/3/library/tkinter.html)
 [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
-[![Status](https://img.shields.io/badge/Status-Active-brightgreen?style=for-the-badge)](https://github.com/your-username/CafePOS-Pro)
+[![Status](https://img.shields.io/badge/Status-Active-brightgreen?style=for-the-badge)](https://github.com/Ahsan-Shah056/CafePOS-Pro)
 
-<img src="https://via.placeholder.com/800x400/2c3e50/ffffff?text=CafePOS+Pro+Demo" alt="CafePOS Pro Demo" width="100%" style="border-radius: 10px; margin: 20px 0;">
+<img src="Logo.png" alt="CafePOS Pro Logo" width="200" style="border-radius: 10px; margin: 20px 0;">
 
 ---
 
